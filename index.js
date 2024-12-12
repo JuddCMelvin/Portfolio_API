@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 
 //controllers
-app.use('/projects', require('./controller/projects'))
+app.use('/projects', require('./controllers/projects'))
 
 //Create a Homepage route
 app.get('/', function(req,res){
