@@ -2,7 +2,12 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 
-//controllers
+//MIDDLEWARE
+app.set('views', __dirname + '/views')
+app.set('view engine', 'jsx')
+app.engine('jsx', require ('express-react-views').createEngine())
+
+//CONTROLLERS
 app.use('/projects', require('./controllers/projects_controller'))
 
 //Create a Homepage route
