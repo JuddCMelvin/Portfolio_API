@@ -18,7 +18,7 @@ app.get('/', function(req,res){
 
 //Wildcard Route 
 app.get('*', function(req,res){
-    res.status(404).send('404 page')
+    res.render('error404')
 })
 
 //listen for connections

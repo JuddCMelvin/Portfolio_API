@@ -1,9 +1,9 @@
 const React = require('react')
 const Default = require('./layouts/default')
 
-function Index({projects}) {
+function Index({projects, title}) {
     return (
-        <Default>
+        <Default title={title}>
             <h2>Index Page</h2>
             <p>Here are my projects</p>
             <ul>

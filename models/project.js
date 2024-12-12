@@ -4,7 +4,7 @@ module.exports = [
         "description": "A RESTful API for managing portfolio projects.",
         "technologies": ["Node.js", "Express", "JavaScript"],
         "githubLink": "https://github.com/yourusername/portfolio-api",
-        "liveDemoLink": "https://portfolio-api-demo.com"
+        "liveDemoLink": "https://portfolio-api-demo.com",
     },
     {
         "title": "Weather App",
