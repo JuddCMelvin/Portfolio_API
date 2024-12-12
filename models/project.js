@@ -5,26 +5,30 @@ module.exports = [
         "technologies": ["Node.js", "Express", "JavaScript"],
         "githubLink": "https://github.com/yourusername/portfolio-api",
         "liveDemoLink": "https://portfolio-api-demo.com",
+        "image": "https://placehold.co/400",
     },
     {
         "title": "Weather App",
         "description": "A web application that displays weather forecasts using an external API.",
         "technologies": ["React", "CSS", "OpenWeather API"],
         "githubLink": "https://github.com/yourusername/weather-app",
-        "liveDemoLink": "https://weather-app-demo.com"
+        "liveDemoLink": "https://weather-app-demo.com",
+        "image": "https://placehold.co/400"
     },
     {
         "title": "Task Manager",
         "description": "A simple task management app with CRUD operations.",
         "technologies": ["HTML", "CSS", "JavaScript"],
         "githubLink": "https://github.com/yourusername/task-manager",
-        "liveDemoLink": "https://task-manager-demo.com"
+        "liveDemoLink": "https://task-manager-demo.com",
+        "image": "https://placehold.co/400"
     },
     {
         "title": "E-commerce Site",
         "description": "An e-commerce website with a shopping cart and checkout functionality.",
         "technologies": ["Node.js", "Express", "MongoDB", "React"],
         "githubLink": "https://github.com/yourusername/ecommerce-site",
-        "liveDemoLink": "https://ecommerce-demo.com"
+        "liveDemoLink": "https://ecommerce-demo.com",
+        "image": "https://placehold.co/400"
     }
 ]

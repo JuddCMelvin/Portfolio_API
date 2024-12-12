@@ -9,15 +9,32 @@ projects.get('/', (req,res) => {
         title: 'Index Page'
         }
     )
-    // res.send(Project)
+})
+
+// NEW
+projects.get('/new', (req, res) => {
+    res.render('projects/new')
 })
 
 //SHOW
 projects.get('/:arrayIndex', (req,res) => {
-    res.render ('showProject', {
-        project: Project[req.params.arrayIndex]
-    })
-    // res.send(Project[req.params.arrayIndex])
+    if(Project[req.params.arrayIndex]) {
+        res.render('projects/show', {
+            project: Project[req.params.arrayIndex]
+        })
+    } else {
+        res.render('error404')
+    }
+})
+
+//CREATE 
+projects.post('/', (req,res) => {
+    if (!req.body.image) {
+        req.body.image = 'https://placehold.co/400'
+    }
+    console.log(req.body)
+    Project.push(req.body)
+    res.redirect('/projects')
 })
 
 module.exports = projects
