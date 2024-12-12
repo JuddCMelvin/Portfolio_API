@@ -2,6 +2,9 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 
+//controllers
+app.use('/projects', require('./controller/projects'))
+
 //Create a Homepage route
 app.get('/', function(req,res){
     //This gest sent to the client
