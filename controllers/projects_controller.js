@@ -20,7 +20,8 @@ projects.get('/new', (req, res) => {
 projects.get('/:arrayIndex', (req,res) => {
     if(Project[req.params.arrayIndex]) {
         res.render('projects/show', {
-            project: Project[req.params.arrayIndex]
+            project: Project[req.params.arrayIndex],
+            index: req.params.arrayIndex,
         })
     } else {
         res.render('error404')
@@ -35,6 +36,12 @@ projects.post('/', (req,res) => {
     console.log(req.body)
     Project.push(req.body)
     res.redirect('/projects')
+})
+
+// DELETE
+projects.delete('/:indexArray', (req, res) => {
+    Project.splice(req.params.indexArray, 1)
+    res.status(303).redirect('/projects')
 })
 
 module.exports = projects

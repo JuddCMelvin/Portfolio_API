@@ -6,14 +6,15 @@ function New() {
         <Default>
             <h2>Add a New Project</h2>
             <form action="/projects" method="POST">
-                <label htmlFor="title">Title</label>
-                <input
-                    type="text"
-                    name="title"
-                    id="title"
-                    required
-                />
-
+                <div className="form-group">
+                    <label htmlFor="title">Title</label>
+                    <input
+                        type="text"
+                        name="title"
+                        id="title"
+                        required
+                    />
+                </div>
                 <label htmlFor="description">Description</label>
                 <textarea
                     name="description"
@@ -21,7 +22,6 @@ function New() {
                     rows="4"
                     required
                 />
-
                 <label htmlFor="technologies">Technologies (comma-separated)</label>
                 <input
                     type="text"
@@ -54,7 +54,6 @@ function New() {
                     id="image"
                     placeholder="https://placehold.co/400"
                 />
-
                 <br />
                 <input type="submit" value="Add Project" />
             </form>
@@ -64,4 +63,3 @@ function New() {
 
 module.exports = New;
 
-// CREATE
