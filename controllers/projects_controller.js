@@ -18,23 +18,27 @@ projects.get('/new', (req,res) => {
 })
 
 //SHOW
-projects.get('/:arrayIndex', (req,res) => {
-    if(Project[req.params.arrayIndex]) {
-        res.render('projects/show', {
-            project: Project[req.params.arrayIndex],
-            index: req.params.arrayIndex,
+projects.get('/:id', (req,res) => {
+    Project.findById(req.params.id)
+        .then(foundProject => {
+            res.render('projects/show', {
+                project: foundProject, 
+            })
         })
-    } else {
-        res.render('error404')
-    }
+        .catch(err => {
+            res.render('error404')
+        })
+    // else {
+    //     res.render('error404')
+    // }
 })
 
 // EDIT
-projects.get('/:arrayIndex/edit', (req,res) => {
+projects.get('/:id/edit', (req,res) => {
     // let id = Number(req.params.indexArray)
 
     res.render('projects/edit', {
-        project: Project[req.params.arrayIndex],
+        project: Project[req.params.id],
         index: req.params.indexArray
     })
 })
