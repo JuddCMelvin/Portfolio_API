@@ -1,7 +1,7 @@
 const React = require('react')
 const Default = require('../layouts/default')
 
-function Show({project, index}) {
+function Show({project}) {
     console.log(project.title)
     return (
         <Default>
@@ -11,9 +11,9 @@ function Show({project, index}) {
                 <img src={project.image} alt={project.name}/>
                 <h4>{project.description}</h4>
                 <h4><a href="/projects">BACK</a></h4>
-                <a href={`/projects/${index}/edit`}><button>Edit</button></a>
+                <a href={`/projects/${project.id}/edit`}><button>Edit</button></a>
             </div>
-            <form action={`/projects/${index}?_method=DELETE`} method="POST">
+            <form action={`/projects/${project.id}?_method=DELETE`} method="POST">
                 <input type='submit' value="DELETE" />
             </form>
         </Default>

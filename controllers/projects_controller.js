@@ -28,19 +28,16 @@ projects.get('/:id', (req,res) => {
         .catch(err => {
             res.render('error404')
         })
-    // else {
-    //     res.render('error404')
-    // }
 })
 
 // EDIT
-projects.get('/:id/edit', (req,res) => {
-    // let id = Number(req.params.indexArray)
-
-    res.render('projects/edit', {
-        project: Project[req.params.id],
-        index: req.params.indexArray
-    })
+projects.get('/:id/edit', (req, res) => {
+    Project.findById(req.params.id)
+        .then(foundProject => {
+            res.render('projects/edit', {
+                project: foundProject
+            })
+        })
 })
 
 //CREATE 
@@ -54,32 +51,27 @@ projects.post('/', (req,res) => {
 })
 
 // UPDATE
-projects.put('/:arrayIndex', (req,res) => {
+projects.put('/:id', (req,res) => {
     if(!req.body.description){
         req.body.description = 'Coming Soon'
     }
     if(!req.body.image){
         req.body.image = "https://placehold.co/400" 
     }
-    Project[req.params.arrayIndex] = req.body
-    res.redirect(`/projects/${req.params.arrayIndex}`)
-    console.log('successfully edited')
-})
-
-// EDIT
-projects.get('/:indexArray/edit', (req,res) => {
-    // let id = Number(req.params.indexArray)
-
-    res.render('projects/edit', {
-        project: Project[req.params.indexArray],
-        index: req.params.indexArray
-    })
+    Project.findByIdAndUpdate(req.params.id, req.body, { new: true}) 
+        .then(updatedProject => {
+            console.log(updatedProject)
+            res.redirect(`/projects/${req.params.id}`)
+        })
 })
 
 // DELETE
-projects.delete('/:indexArray', (req,res) => {
-    Project.splice(req.params.indexArray, 1)
-    res.status(303).redirect('/projects')
+projects.delete('/:id', (req,res) => {
+    Project.findByIdAndDelete(req.params.id) 
+        .then(deletedProject => { 
+            res.status(303).redirect('/projects')
+        })
 })
 
 module.exports = projects
+

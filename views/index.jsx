@@ -11,7 +11,7 @@ function Index({ projects, title }) {
                     projects.map((project, index) => {
                         return (
                             <li key={index}>
-                                <a href={`/projects/${project.id}`}>
+                                <a href={`/projects/${project._id}`}>
                                     {project.title}
                                 </a>
                             </li>

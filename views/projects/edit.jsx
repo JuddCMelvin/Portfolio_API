@@ -1,11 +1,11 @@
 const React = require('react');
 const Default = require('../layouts/default');
 
-function Edit({project, index}) {
+function Edit({project}) {
     return (
         <Default>
             <h2>Edit a Project</h2>
-            <form action={`/projects/${index}?_method=PUT`} method="POST">
+            <form action={`/projects/${project._id}?_method=PUT`} method="POST">
                 <div className="form-group">
                     <label htmlFor="title">Title</label>
                     <input
