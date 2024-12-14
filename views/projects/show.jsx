@@ -11,6 +11,7 @@ function Show({project, index}) {
                 <img src={project.image} alt={project.name}/>
                 <h4>{project.description}</h4>
                 <h4><a href="/projects">BACK</a></h4>
+                <a href={`/projects/${index}/edit`}><button>Edit</button></a>
             </div>
             <form action={`/projects/${index}?_method=DELETE`} method="POST">
                 <input type='submit' value="DELETE" />
