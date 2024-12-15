@@ -19,6 +19,8 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 
 //CONTROLLERS
 app.use('/projects', require('./controllers/projects_controller'))
+app.use('/skills', require('./controllers/skills_controller'))
+// app.use('/certs', require('./controllers/certs_controller'))
 
 //Create a Homepage route
 app.get('/', function (req, res) {

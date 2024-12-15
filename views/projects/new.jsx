@@ -1,7 +1,7 @@
 const React = require('react');
 const Default = require('../layouts/default');
 
-function New() {
+function New(data) {
     return (
         <Default>
             <h2>Add a New Project</h2>
