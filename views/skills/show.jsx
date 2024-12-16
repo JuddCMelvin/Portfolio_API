@@ -1,20 +1,18 @@
 const React = require('react')
 const Default = require('../layouts/default')
 
-function Show({project}) {
-    console.log(project.title)
+function Show({skill}) {
+    console.log(skill.name)
     return (
         <Default>
             <div className="align-center">
-                <h2>Show Page</h2>
-                <h3>{project.title}</h3>
-                <img src={project.image} alt={project.name}/>
-                <h4>{project.description}</h4>
-                <h5>{project.technologies}</h5>
-                <h4><a href="/projects">BACK</a></h4>
-                <a href={`/projects/${project.id}/edit`}><button>Edit</button></a>
+                <h2>Skill</h2>
+                <h3>{skill.name}</h3>
+                <img src={skill.image} alt={skill.name}/>
+                <h4><a href="/skills">BACK</a></h4>
+                <a href={`/skills/${skill.id}/edit`}><button>Edit</button></a>
             </div>
-            <form action={`/projects/${project.id}?_method=DELETE`} method="POST">
+            <form action={`/skills/${skill.id}?_method=DELETE`} method="POST">
                 <input type='submit' value="DELETE" />
             </form>
         </Default>

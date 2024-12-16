@@ -7,71 +7,74 @@ skills.get('/', (req,res) => {
         .then(foundSkills => {
             res.render('skills/Index', {
                 skills: foundSkills, 
-                title: 'Skills Index Page'
+                title: 'Skills Index Page',
             })
         })
 })
 
-// // NEW
-// skills.get('/new', (req,res) => {
-//     res.render('skills/new')
-// })
+// NEW
+skills.get('/new', (req,res) => {
+    res.render('skills/new')
+})
 
-// //SHOW
-// skills.get('/:id', (req,res) => {
-//     Project.findById(req.params.id)
-//         .then(foundProject => {
-//             res.render('skills/show', {
-//                 project: foundProject, 
-//             })
-//         })
-//         .catch(err => {
-//             res.render('error404')
-//         })
-// })
+//SHOW
+skills.get('/:id', (req,res) => {
+    Skill.findById(req.params.id)
+        .then(foundSkill => {
+            res.render('skills/show', {
+                skill: foundSkill, 
+            })
+        })
+        .catch(err => {
+            res.render('error404')
+        })
+})
 
-// // EDIT
-// skills.get('/:id/edit', (req, res) => {
-//     Project.findById(req.params.id)
-//         .then(foundProject => {
-//             res.render('skills/edit', {
-//                 project: foundProject
-//             })
-//         })
-// })
+// EDIT
+skills.get('/:id/edit', (req, res) => {
+    Skill.findById(req.params.id)
+        .then(foundSkill => {
+            res.render('skills/edit', {
+                skill: foundSkill
+            })
+        })
+})
 
-// //CREATE 
-// skills.post('/', (req,res) => {
-//     if (!req.body.image) {
-//         req.body.image = 'https://placehold.co/400'
-//     }
-//     console.log(req.body)
-//     Project.create(req.body)
-//     res.redirect('/skills')
-// })
+//CREATE 
+skills.post('/', (req,res) => {
+    if (!req.body.image) {
+        req.body.image = 'https://placehold.co/100'
+    }
+    Skill.create(req.body)
+    .then(() => {
+        console.log('Skill successfully created');
+        res.redirect('/skills');
+    })
+    .catch(err => {
+        console.error('Error creating skill:', err);
+        res.status(500).send('Error creating skill');
+    });
+});
 
-// // UPDATE
-// skills.put('/:id', (req,res) => {
-//     if(!req.body.description){
-//         req.body.description = 'Coming Soon'
-//     }
-//     if(!req.body.image){
-//         req.body.image = "https://placehold.co/400" 
-//     }
-//     Project.findByIdAndUpdate(req.params.id, req.body, { new: true}) 
-//         .then(updatedProject => {
-//             console.log(updatedProject)
-//             res.redirect(`/skills/${req.params.id}`)
-//         })
-// })
+// UPDATE
+skills.put('/:id', (req,res) => {
+    if(!req.body.image){
+        req.body.image = "https://placehold.co/100" 
+    }
+    Skill.findByIdAndUpdate(req.params.id, req.body, { new: true}) 
+        .then(updatedSkill => {
+            console.log(updatedSkill)
+            res.redirect(`/skills/${req.params.id}`)
+        })
+})
 
-// // DELETE
-// skills.delete('/:id', (req,res) => {
-//     Project.findByIdAndDelete(req.params.id) 
-//         .then(deletedProject => { 
-//             res.status(303).redirect('/skills')
-//         })
-// })
+// DELETE
+skills.delete('/:id', (req,res) => {
+    Skill.findByIdAndDelete(req.params.id) 
+        .then(deletedSkill => { 
+            res.status(303).redirect('/skills')
+        })
+})
 
 skills.get('/data/seed', (req, res) => {
     Skill.insertMany(

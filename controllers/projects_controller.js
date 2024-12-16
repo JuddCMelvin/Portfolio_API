@@ -22,10 +22,9 @@ projects.get('/:id', (req,res) => {
     Project.findById(req.params.id)
         .then(foundProject => {
             res.render('projects/show', {
-                project: foundProject, 
+                project: foundProject
             })
-        })
-        .catch(err => {
+        }).catch(err => {
             res.render('error404')
         })
 })
@@ -45,10 +44,16 @@ projects.post('/', (req,res) => {
     if (!req.body.image) {
         req.body.image = 'https://placehold.co/400'
     }
-    console.log(req.body)
     Project.create(req.body)
-    res.redirect('/projects')
-})
+    .then(() => {
+        console.log('Project successfully created');
+        res.redirect('/projects');
+    })
+    .catch(err => {
+        console.error('Error creating project:', err);
+        res.status(500).send('Error creating project');
+    });
+});
 
 // UPDATE
 projects.put('/:id', (req,res) => {
