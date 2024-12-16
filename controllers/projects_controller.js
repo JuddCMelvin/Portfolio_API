@@ -1,6 +1,7 @@
 const express = require('express')
 const projects = express.Router()
 const Project = require('../models/project.js')
+const Skill = require('../models/skill.js')
 
 projects.get('/', (req,res) => {
     Project.find()
@@ -14,7 +15,12 @@ projects.get('/', (req,res) => {
 
 // NEW
 projects.get('/new', (req,res) => {
-    res.render('projects/new')
+    Skill.find()
+        .then(foundSkills => {
+            res.render('projects/new', {
+                skills: foundSkills
+            })
+        })
 })
 
 //SHOW
@@ -47,6 +53,7 @@ projects.post('/', (req,res) => {
     Project.create(req.body)
     .then(() => {
         console.log('Project successfully created');
+        console.log(req.body)
         res.redirect('/projects');
     })
     .catch(err => {

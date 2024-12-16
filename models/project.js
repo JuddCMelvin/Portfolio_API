@@ -12,10 +12,12 @@ const projectSchema = new Schema({
         type: String, 
         required: true
     },
-    technologies: {
-        type: [String], 
-        required: true
-    },
+    skills: [
+        {
+            type: String, // Storing skill names as strings
+            required: true,
+        },
+    ],
     githubLink: {
         type: String,
     },
@@ -28,14 +30,12 @@ const projectSchema = new Schema({
     },
 }); 
 
-//helper methods
-// projectSchema.methods.getTechnologiesUsed = function() {
-//     if(this.technologies){
-//         this.technologies.map(technology => {
-//             technology = technology + ' '
-//             return technology
-//         })
-//     }
+// helper methods
+// projectSchema.methods.getTechnologiesUsed = function(){
+
+//     return `${this.title} uses ${this.technologies}`
 // }
+
+
 const Project = mongoose.model('Project', projectSchema)
 module.exports = Project

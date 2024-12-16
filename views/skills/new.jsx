@@ -1,7 +1,7 @@
 const React = require('react');
 const Default = require('../layouts/default');
 
-function New(data) {
+function New({skills}) {
     return (
         <Default>
             <h2>Add a New Skill</h2>

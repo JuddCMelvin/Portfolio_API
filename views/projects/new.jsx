@@ -1,7 +1,7 @@
 const React = require('react');
 const Default = require('../layouts/default');
 
-function New(data) {
+function New({skills}) {
     return (
         <Default>
             <h2>Add a New Project</h2>
@@ -15,19 +15,25 @@ function New(data) {
                         required
                     />
                 </div>
+
+                {skills.map(skill => {
+                    return(
+                        <div key={skill.id}>
+                            <label htmlFor="skills">{skill.name}</label>
+                            <input
+                                type="checkbox"
+                                name="skills" 
+                                value={skill.name}
+                            />
+                        </div>
+                    )
+                })}
+
                 <label htmlFor="description">Description</label>
                 <textarea
                     name="description"
                     id="description"
                     rows="4"
-                    required
-                />
-                <label htmlFor="technologies">Technologies (comma-separated)</label>
-                <input
-                    type="text"
-                    name="technologies"
-                    id="technologies"
-                    placeholder="e.g., Node.js, Express, JavaScript"
                     required
                 />
 

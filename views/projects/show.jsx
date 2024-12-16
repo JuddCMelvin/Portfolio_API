@@ -11,6 +11,15 @@ function Show({project}) {
                 <img src={project.image} alt={project.name}/>
                 <h4>{project.description}</h4>
                 <h5>{project.technologies}</h5>
+
+                <div>
+                    {project.skills.map((skill, index) => (
+                        <span key={index} style={{ marginRight: '10px' }}>
+                            {skill}
+                        </span>
+                    ))}
+                </div>
+                
                 <h4><a href="/projects">BACK</a></h4>
                 <a href={`/projects/${project.id}/edit`}><button>Edit</button></a>
             </div>
