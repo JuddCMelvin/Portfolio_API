@@ -1,11 +1,11 @@
 const React = require('react');
 const Default = require('../layouts/default');
 
-function Edit({project}) {
+function Edit({project, skills}) {
     return (
         <Default>
             <h2>Edit a Project</h2>
-            <form action={`/projects/${project._id}?_method=PUT`} method="POST">
+            <form action={`/projects/${project.id}?_method=PUT`} method="POST">
                 <div className="form-group">
                     <label htmlFor="title">Title</label>
                     <input
@@ -23,14 +23,19 @@ function Edit({project}) {
                     rows="4"
                     placeholder={project.description}
                 />
-                <label htmlFor="technologies">Technologies (comma-separated)</label>
-                <input
-                    type="text"
-                    name="technologies"
-                    id="technologies"
-                    placeholder={project.technologies}
-                    required
-                />
+                
+                {skills.map(skill => {
+                    return (
+                        <div key={skill.id}>
+                            <label htmlFor="skills">{skill.name}</label>
+                            <input
+                                type="checkbox"
+                                name="skills"
+                                value={skill.name}
+                            />
+                        </div>
+                    )
+                })}
 
                 <label htmlFor="githubLink">GitHub Link</label>
                 <input
@@ -63,3 +68,4 @@ function Edit({project}) {
 }
 
 module.exports = Edit
+

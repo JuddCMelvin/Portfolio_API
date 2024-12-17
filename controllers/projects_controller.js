@@ -39,11 +39,16 @@ projects.get('/:id', (req,res) => {
 projects.get('/:id/edit', (req, res) => {
     Project.findById(req.params.id)
         .then(foundProject => {
-            res.render('projects/edit', {
-                project: foundProject
+                Skill.find()
+                .then(foundSkills => {
+                    res.render('projects/edit', {
+                        project: foundProject,
+                        skills: foundSkills
+                })
             })
         })
 })
+
 
 //CREATE 
 projects.post('/', (req,res) => {
